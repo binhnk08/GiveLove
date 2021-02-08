@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "998418015022",
+    "project_id": "givelove-xlteam",
+    "storage_bucket": "givelove-xlteam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998418015022:android:88ba85f288e86d65d950bf",
+        "android_client_info": {
+          "package_name": "com.xlteam.givelove"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998418015022-q755ofpfp09fkmkft381quc6kpf76nos.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDthlZIvqyHaWSN4StqAKFVUPZ3aYVNw68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998418015022-q755ofpfp09fkmkft381quc6kpf76nos.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
