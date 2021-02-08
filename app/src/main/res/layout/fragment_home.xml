@@ -61,7 +61,8 @@
         android:layout_height="match_parent"
         android:layout_below="@id/divider2"
         android:animateLayoutChanges="true"
-        android:background="@color/color_FA">
+        android:background="@color/color_FA"
+        android:visibility="gone">
 
         <ScrollView
             android:layout_width="match_parent"
