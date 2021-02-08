@@ -18,10 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.xlteam.givelove.R;
 import com.xlteam.givelove.external.datasource.GradientDataSource;
 import com.xlteam.givelove.external.utility.customview.SpannableTextView;
-import com.xlteam.givelove.external.utility.utils.Constant;
 import com.xlteam.givelove.external.utility.utils.Utility;
 import com.xlteam.givelove.model.CommonCaption;
-import com.xlteam.givelove.ui.edit.EditCaptionActivity;
 
 import java.util.List;
 
@@ -50,7 +48,7 @@ public class CaptionAdapter extends RecyclerView.Adapter<CaptionAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_caption_in_category, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_caption, parent, false);
         return new CaptionAdapter.ViewHolder(view);
     }
 
@@ -73,11 +71,6 @@ public class CaptionAdapter extends RecyclerView.Adapter<CaptionAdapter.ViewHold
             } else holder.layoutMenu.setVisibility(View.GONE);
         });
 
-        holder.imgEdit.setOnClickListener(view -> {
-            Intent intent = new Intent(mContext, EditCaptionActivity.class);
-            intent.putExtra(Constant.EXTRA_CAPTION, caption);
-            mContext.startActivity(intent);
-        });
         holder.imgCopy.setOnClickListener(view -> {
             ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("label", caption.getContent());
@@ -129,7 +122,7 @@ public class CaptionAdapter extends RecyclerView.Adapter<CaptionAdapter.ViewHold
         private final SpannableTextView tvCaptionContent;
         private RelativeLayout layoutBg;
         private LinearLayout layoutMenu;
-        private ImageView imgSaved, imgEdit, imgCopy, imgShare;
+        private ImageView imgSaved, imgCopy, imgShare;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -137,7 +130,6 @@ public class CaptionAdapter extends RecyclerView.Adapter<CaptionAdapter.ViewHold
             layoutBg = itemView.findViewById(R.id.layout_background);
             layoutMenu = itemView.findViewById(R.id.layout_menu_preview);
             imgSaved = itemView.findViewById(R.id.image_saved);
-            imgEdit = itemView.findViewById(R.id.image_edit);
             imgCopy = itemView.findViewById(R.id.image_copy);
             imgShare = itemView.findViewById(R.id.image_share);
         }

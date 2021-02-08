@@ -21,16 +21,6 @@ public class Constant {
     public static final int TYPE_GIA_DINH = 5;
     public static final int TYPE_KHAC = 6;
 
-    public static final String EXTRA_CAPTION = "EXTRA_CAPTION";
-
-    public static int ALIGN_CENTER = 0;
-    public static int ALIGN_START = 1;
-    public static int ALIGN_END = 2;
-
-    public static int BACKGROUND_COLOR_0 = 0;
-    public static int BACKGROUND_COLOR_50 = 1;
-    public static int BACKGROUND_COLOR_100 = 2;
-
     public static String PREF_GALLERY = "PREF_GALLERY";
     public static final String GALLERY_PATH = "GALLERY_PATH";
 

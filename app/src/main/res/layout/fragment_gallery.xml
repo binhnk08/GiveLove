@@ -21,7 +21,6 @@
             android:paddingEnd="5dp">
 
             <ImageView
-                android:id="@+id/image_check_all"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:background="@drawable/bg_ripple_click_view_circle"
@@ -36,7 +35,6 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_number_image_checked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -49,7 +47,6 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tv_empty_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/layout_top"
@@ -61,13 +58,11 @@
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_gallery_caption"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_top" />
 
     <LinearLayout
-        android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -79,7 +74,6 @@
         android:visibility="gone">
 
         <LinearLayout
-            android:id="@+id/btn_share_gallery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -104,7 +98,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/btn_delete_gallery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

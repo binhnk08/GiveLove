@@ -5,31 +5,31 @@ import java.lang.reflect.Method;
 
 public class LogcatLogWriter implements LogWriter {
 
-    private static final String SOCIAL_CAPTION_TAG = "GiveLove";
+    private static final String GIVE_LOVE_TAG = "GiveLove";
 
     @Override
     public void v(String msg) {
-        android.util.Log.v(SOCIAL_CAPTION_TAG, msg);
+        android.util.Log.v(GIVE_LOVE_TAG, msg);
     }
 
     @Override
     public void d(String msg) {
-        android.util.Log.i(SOCIAL_CAPTION_TAG, msg);
+        android.util.Log.i(GIVE_LOVE_TAG, msg);
     }
 
     @Override
     public void i(String msg) {
-        android.util.Log.i(SOCIAL_CAPTION_TAG, msg);
+        android.util.Log.i(GIVE_LOVE_TAG, msg);
     }
 
     @Override
     public void w(String msg) {
-        android.util.Log.w(SOCIAL_CAPTION_TAG, msg);
+        android.util.Log.w(GIVE_LOVE_TAG, msg);
     }
 
     @Override
     public void e(String msg) {
-        android.util.Log.e(SOCIAL_CAPTION_TAG, msg);
+        android.util.Log.e(GIVE_LOVE_TAG, msg);
     }
 
     @Override

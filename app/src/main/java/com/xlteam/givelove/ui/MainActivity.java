@@ -30,8 +30,6 @@ import com.xlteam.givelove.external.utility.animation.ViManager;
 import com.xlteam.givelove.external.utility.thread.AsyncLayoutInflateManager;
 import com.xlteam.givelove.external.utility.utils.Constant;
 import com.xlteam.givelove.external.utility.utils.Utility;
-import com.xlteam.givelove.ui.edit.EditCaptionActivity;
-import com.xlteam.givelove.ui.gallery.GalleryFragment;
 import com.xlteam.givelove.ui.home.HomeFragment;
 import com.xlteam.givelove.ui.home.SearchDialogFragment;
 import com.xlteam.givelove.ui.saved.SavedFragment;
@@ -43,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private Fragment currentFragment;
     private AdView mAdView;
-    private ImageView imgMenu, imgSearch, imgCreatePicture;
+    private ImageView imgMenu, imgSearch;
     private TextView tvTitle;
     private RelativeLayout toolbarCustom;
 
@@ -59,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         tvTitle = findViewById(R.id.tv_title);
         imgMenu = findViewById(R.id.btn_menu);
         imgSearch = findViewById(R.id.btn_search);
-        imgCreatePicture = findViewById(R.id.btn_create_picture);
         toolbarCustom = findViewById(R.id.toolbarCustom);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -67,10 +64,6 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.nav_home:
                     selectNavigation(HOME);
-                    drawer.closeDrawer(GravityCompat.START, true);
-                    return true;
-                case R.id.nav_gallery:
-                    selectNavigation(GALLERY);
                     drawer.closeDrawer(GravityCompat.START, true);
                     return true;
                 case R.id.nav_saved:
@@ -105,10 +98,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
         imgMenu.setOnClickListener(view -> drawer.openDrawer(GravityCompat.START, true));
-        imgCreatePicture.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, EditCaptionActivity.class);
-            startActivity(intent);
-        });
+
         imgSearch.setOnClickListener(view -> {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -188,17 +178,10 @@ public class MainActivity extends AppCompatActivity {
                 tvTitle.setText(R.string.title_home);
                 imgSearch.setVisibility(View.VISIBLE);
             }
-        } else if (type == GALLERY) { //giữ trạng thái khi chọn lại item
-            if (!(currentFragment instanceof GalleryFragment)) {
-                currentFragment = new GalleryFragment();
-                navigationView.setCheckedItem(R.id.nav_gallery);
-                tvTitle.setText(R.string.menu_gallery);
-                imgSearch.setVisibility(View.GONE);
-            }
-        } else if (type == SAVED) { //giữ trạng thái khi chọn lại item
+        }  else if (type == SAVED) { //giữ trạng thái khi chọn lại item
             if (!(currentFragment instanceof SavedFragment)) {
                 currentFragment = new SavedFragment();
-                navigationView.setCheckedItem(R.id.nav_gallery);
+                navigationView.setCheckedItem(R.id.nav_saved);
                 tvTitle.setText(R.string.menu_saved);
                 imgSearch.setVisibility(View.GONE);
             }
@@ -214,12 +197,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START, true);
-        } else if (currentFragment instanceof GalleryFragment && toolbarCustom.getVisibility() == View.GONE) {
-            toolbarCustom.setVisibility(View.VISIBLE);
-            ((GalleryFragment) currentFragment).onBackPress();
-        } else if (navigationView.getMenu().findItem(R.id.nav_gallery).isChecked()) {
-            selectNavigation(HOME);
-        } else if (navigationView.getMenu().findItem(R.id.nav_saved).isChecked()) {
+        }  else if (navigationView.getMenu().findItem(R.id.nav_saved).isChecked()) {
             selectNavigation(HOME);
         } else {
             super.onBackPressed();
