@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,12 +24,13 @@ import com.xlteam.givelove.R;
 import com.xlteam.givelove.external.utility.animation.ViManager;
 import com.xlteam.givelove.external.utility.thread.AsyncLayoutInflateManager;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
     private Context mContext;
     private ViewPager viewPager;
     private SlidePagerAdapter mAdapter;
     private RelativeLayout layoutTitle, layoutCategory;
     private TextView tvTitle;
+    private LinearLayout btnTatCaThinh, btnThinhDangHot, btnChoiChu, btnThoCa, btnVanHoc, btnCaDao;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -59,29 +61,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        tvTitle.setText(mContext.getString(R.string.tat_ca_thinh));
-                        break;
-                    case 1:
-                        tvTitle.setText(mContext.getString(R.string.thinh_dang_hot));
-                        break;
-                    case 2:
-                        tvTitle.setText(mContext.getString(R.string.choi_chu));
-                        break;
-                    case 3:
-                        tvTitle.setText(mContext.getString(R.string.tho_ca));
-                        break;
-                    case 4:
-                        tvTitle.setText(mContext.getString(R.string.van_hoc));
-                        break;
-                    case 5:
-                        tvTitle.setText(mContext.getString(R.string.ca_dao));
-                        break;
-                    case 6:
-                        tvTitle.setText(mContext.getString(R.string.van_van));
-                        break;
-                }
+                setCategoryName(position);
             }
 
             @Override
@@ -99,7 +79,77 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+        initMenuCategory(root);
         return root;
+    }
+
+    private void initMenuCategory(View view) {
+        btnTatCaThinh = view.findViewById(R.id.btn_tat_ca_thinh);
+        btnThinhDangHot = view.findViewById(R.id.btn_thinh_dang_hot);
+        btnChoiChu = view.findViewById(R.id.btn_choi_chu);
+        btnThoCa = view.findViewById(R.id.btn_tho_ca);
+        btnVanHoc = view.findViewById(R.id.btn_van_hoc);
+        btnCaDao = view.findViewById(R.id.btn_ca_dao);
+        layoutCategory = view.findViewById(R.id.layout_category);
+
+        btnTatCaThinh.setOnClickListener(this);
+        btnThinhDangHot.setOnClickListener(this);
+        btnChoiChu.setOnClickListener(this);
+        btnThoCa.setOnClickListener(this);
+        btnVanHoc.setOnClickListener(this);
+        btnCaDao.setOnClickListener(this);
+        layoutCategory.setOnTouchListener((v, motionEvent) -> true);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int position = 0;
+        switch (view.getId()) {
+            case R.id.btn_tat_ca_thinh:
+                position = 0;
+                break;
+            case R.id.btn_thinh_dang_hot:
+                position = 1;
+                break;
+            case R.id.btn_choi_chu:
+                position = 2;
+                break;
+            case R.id.btn_tho_ca:
+                position = 3;
+                break;
+            case R.id.btn_van_hoc:
+                position = 4;
+                break;
+            case R.id.btn_ca_dao:
+                position = 5;
+                break;
+        }
+        viewPager.setCurrentItem(position);
+        layoutCategory.setVisibility(View.GONE);
+    }
+
+    private void setCategoryName(int numberCategory) {
+        switch (numberCategory) {
+            case 0:
+                tvTitle.setText(mContext.getString(R.string.tat_ca_thinh));
+                break;
+            case 1:
+                tvTitle.setText(mContext.getString(R.string.thinh_dang_hot));
+                break;
+            case 2:
+                tvTitle.setText(mContext.getString(R.string.choi_chu));
+                break;
+            case 3:
+                tvTitle.setText(mContext.getString(R.string.tho_ca));
+                break;
+            case 4:
+                tvTitle.setText(mContext.getString(R.string.van_hoc));
+                break;
+            case 5:
+                tvTitle.setText(mContext.getString(R.string.ca_dao));
+                break;
+        }
     }
 
     @Override
@@ -139,7 +189,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 7;
+            return 6;
         }
     }
 }

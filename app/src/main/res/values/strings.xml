@@ -22,11 +22,10 @@
     <string name="copied">Đã sao chép</string>
     <string name="tat_ca_thinh">Tất cả thính</string>
     <string name="thinh_dang_hot">Thính đang HOT</string>
-    <string name="choi_chu">Chơi chữ</string>
+    <string name="choi_chu">Chơi chữ, văn vần</string>
     <string name="tho_ca">Thơ ca</string>
     <string name="van_hoc">Văn học</string>
     <string name="ca_dao">Ca dao, tục ngữ</string>
-    <string name="van_van">Văn vần</string>
     <string name="no_caption">Không có thính nào…</string>
     <string name="no_image">Không có ảnh</string>
     <string name="canh_bao">Cảnh báo</string>
