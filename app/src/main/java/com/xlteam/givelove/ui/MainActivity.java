@@ -5,14 +5,14 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,7 +31,6 @@ import com.xlteam.givelove.external.utility.thread.AsyncLayoutInflateManager;
 import com.xlteam.givelove.external.utility.utils.Constant;
 import com.xlteam.givelove.external.utility.utils.Utility;
 import com.xlteam.givelove.ui.home.HomeFragment;
-import com.xlteam.givelove.ui.home.SearchDialogFragment;
 import com.xlteam.givelove.ui.saved.SavedFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,9 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private Fragment currentFragment;
     private AdView mAdView;
-    private ImageView imgMenu, imgSearch;
-    private TextView tvTitle;
-    private RelativeLayout toolbarCustom;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +51,9 @@ public class MainActivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-        tvTitle = findViewById(R.id.tv_title);
-        imgMenu = findViewById(R.id.btn_menu);
-        imgSearch = findViewById(R.id.btn_search);
-        toolbarCustom = findViewById(R.id.toolbarCustom);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.title_home);
+        setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(item -> {
@@ -97,19 +93,9 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
-        imgMenu.setOnClickListener(view -> drawer.openDrawer(GravityCompat.START, true));
-
-        imgSearch.setOnClickListener(view -> {
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            ViManager.getInstance().setFragmentDefaultAnimation(MainActivity.this, fragmentTransaction);
-            SearchDialogFragment searchDialogFragment = new SearchDialogFragment(() -> {
-                if (currentFragment instanceof HomeFragment) {
-                    ((HomeFragment) currentFragment).updateData();
-                }
-            });
-            searchDialogFragment.show(fragmentTransaction, "dialog");
-        });
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.app_name, R.string.app_name);
+        drawer.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
         selectNavigation(HOME);
     }
 
@@ -175,29 +161,23 @@ public class MainActivity extends AppCompatActivity {
             if (!(currentFragment instanceof HomeFragment)) {
                 currentFragment = new HomeFragment();
                 navigationView.setCheckedItem(R.id.nav_home);
-                tvTitle.setText(R.string.title_home);
-                imgSearch.setVisibility(View.VISIBLE);
+                toolbar.setTitle(R.string.title_home);
             }
-        }  else if (type == SAVED) { //giữ trạng thái khi chọn lại item
+        } else if (type == SAVED) { //giữ trạng thái khi chọn lại item
             if (!(currentFragment instanceof SavedFragment)) {
                 currentFragment = new SavedFragment();
                 navigationView.setCheckedItem(R.id.nav_saved);
-                tvTitle.setText(R.string.menu_saved);
-                imgSearch.setVisibility(View.GONE);
+                toolbar.setTitle(R.string.menu_saved);
             }
         }
         replaceFragment(currentFragment);
-    }
-
-    public void showToolbarCustom(boolean isShow) {
-        toolbarCustom.setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START, true);
-        }  else if (navigationView.getMenu().findItem(R.id.nav_saved).isChecked()) {
+        } else if (navigationView.getMenu().findItem(R.id.nav_saved).isChecked()) {
             selectNavigation(HOME);
         } else {
             super.onBackPressed();

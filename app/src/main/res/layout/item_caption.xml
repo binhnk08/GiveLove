@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp">
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="3dp">
 
@@ -28,7 +30,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerInParent="true"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
@@ -37,46 +42,54 @@
                 android:text="Content"
                 android:textColor="@color/color_25"
                 android:textSize="14dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_content_of_caption"
+                android:background="@color/color_A5"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:id="@+id/tv_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_toStartOf="@id/image_saved"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center_vertical"
+                    android:text="- Sưu tầm -"
+                    android:textColor="@color/color_25"
+                    android:textSize="16dp"
+                    android:textStyle="italic" />
+
+                <ImageView
+                    android:id="@+id/image_saved"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_toStartOf="@id/image_copy"
+                    android:background="@drawable/bg_ripple_click_view_rectangle"
+                    android:padding="5dp"
+                    android:src="@drawable/bookmark_toggle_button" />
+
+                <ImageView
+                    android:id="@+id/image_copy"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_toStartOf="@id/image_share"
+                    android:background="@drawable/bg_ripple_click_view_rectangle"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_copy" />
+
+                <ImageView
+                    android:id="@+id/image_share"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/bg_ripple_click_view_rectangle"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_share" />
+            </RelativeLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_below="@id/card_view" />
-
-    <LinearLayout
-        android:id="@+id/layout_menu_preview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/card_view"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="25dp"
-        android:orientation="horizontal"
-        android:visibility="visible">
-
-        <ImageView
-            android:id="@+id/image_saved"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@drawable/bg_ripple_click_view_circle"
-            android:padding="5dp"
-            android:src="@drawable/bookmark_toggle_button" />
-
-        <ImageView
-            android:id="@+id/image_copy"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@drawable/bg_ripple_click_view_circle"
-            android:padding="5dp"
-            android:src="@drawable/ic_copy" />
-
-        <ImageView
-            android:id="@+id/image_share"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@drawable/bg_ripple_click_view_circle"
-            android:padding="5dp"
-            android:src="@drawable/ic_share" />
-    </LinearLayout>
 </RelativeLayout>

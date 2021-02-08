@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -64,13 +63,6 @@ public class CaptionAdapter extends RecyclerView.Adapter<CaptionAdapter.ViewHold
             mCallback.onBookmarkClick(caption.getId(), holder.imgSaved.isActivated(), position);
         });
 
-        holder.layoutBg.setOnClickListener(view -> {
-            //open preview dialog
-            if (holder.layoutMenu.getVisibility() == View.GONE) {
-                holder.layoutMenu.setVisibility(View.VISIBLE);
-            } else holder.layoutMenu.setVisibility(View.GONE);
-        });
-
         holder.imgCopy.setOnClickListener(view -> {
             ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("label", caption.getContent());
@@ -121,14 +113,12 @@ public class CaptionAdapter extends RecyclerView.Adapter<CaptionAdapter.ViewHold
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final SpannableTextView tvCaptionContent;
         private RelativeLayout layoutBg;
-        private LinearLayout layoutMenu;
         private ImageView imgSaved, imgCopy, imgShare;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvCaptionContent = itemView.findViewById(R.id.tv_content_of_caption);
             layoutBg = itemView.findViewById(R.id.layout_background);
-            layoutMenu = itemView.findViewById(R.id.layout_menu_preview);
             imgSaved = itemView.findViewById(R.id.image_saved);
             imgCopy = itemView.findViewById(R.id.image_copy);
             imgShare = itemView.findViewById(R.id.image_share);
