@@ -11,6 +11,11 @@
     <string name="feedback_msg">Vui lòng mô tả vấn đề hoặc phản hồi của bạn khi dùng ứng dụng:\n</string>
     <string name="choose_one">Chọn một ứng dụng</string>
     <string name="title_home">Chọn thính để rắc</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="rating">Đánh giá</string>
+    <string name="feedback">Phản hồi</string>
+    <string name="share_app">Chia sẻ ứng dụng</string>
+    <string name="other_app">Ứng dụng khác</string>
     <string name="license">Giấy phép</string>
     <string name="term_of_use">Điều khoản sử dụng</string>
     <string name="send_friend">Gửi cho bạn bè</string>
@@ -35,4 +40,5 @@
     <string name="share">Chia sẻ</string>
     <string name="delete">Xóa</string>
     <string name="selected">Đã chọn</string>
+
 </resources>

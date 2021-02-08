@@ -14,30 +14,32 @@
             android:title="@string/menu_saved" />
     </group>
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/grp2"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_rate"
             android:icon="@drawable/ic_rate_app"
-            android:title="Đánh giá" />
+            android:title="@string/rating" />
         <item
             android:id="@+id/nav_feedback"
             android:icon="@drawable/ic_feedback"
-            android:title="Phản hồi" />
+            android:title="@string/feedback" />
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_share"
-            android:title="Chia sẻ ứng dụng" />
+            android:title="@string/share_app" />
         <item
             android:id="@+id/nav_other_app"
             android:icon="@drawable/ic_other_app"
-            android:title="Ứng dụng khác" />
+            android:title="@string/other_app" />
         <item
             android:id="@+id/nav_term_of_use"
             android:icon="@drawable/ic_term_of_use"
-            android:title="Điều khoản sử dụng" />
+            android:title="@string/term_of_use" />
         <item
             android:id="@+id/nav_license"
             android:icon="@drawable/ic_license"
-            android:title="Giấy phép" />
+            android:title="@string/license" />
     </group>
 </menu>

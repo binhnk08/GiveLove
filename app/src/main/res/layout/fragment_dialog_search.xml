@@ -29,11 +29,11 @@
             android:layout_marginEnd="10dp"
             android:layout_toEndOf="@id/imgBack"
             android:background="@drawable/bg_search_view"
-            android:queryHint="Tìm kiếm"
+            android:queryHint="@string/search"
             android:searchIcon="@drawable/ic_search"
             android:singleLine="true"
             android:theme="@style/SearchViewText"
-            app:defaultQueryHint="Tìm kiếm"
+            app:defaultQueryHint="@string/search"
             app:iconifiedByDefault="false"
             app:queryBackground="@null"
             app:searchIcon="@null" />
