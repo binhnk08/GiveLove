@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         int[] layoutList = new int[]{R.layout.fragment_caption_list,
                 R.layout.fragment_home,
                 R.layout.fragment_dialog_search,
-                R.layout.fragment_gallery,
                 R.layout.fragment_saved
         };
         for (int asyncLayoutInflate : layoutList) {

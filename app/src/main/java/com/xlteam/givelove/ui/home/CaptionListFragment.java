@@ -29,7 +29,7 @@ import static com.xlteam.givelove.external.utility.utils.Constant.RepositoryType
 
 public class CaptionListFragment extends Fragment implements ILoader<CommonCaption>, CaptionAdapter.Callback {
     private Context mContext;
-    private TextView tvNumberCaption, tvEmptyCaption;
+    private TextView tvNumberCaption, tvEmptyCaption, tvTitle;
     private RecyclerView rvCaption;
     private int mCategoryNumber;
     private CaptionAdapter mAdapter;
@@ -56,6 +56,7 @@ public class CaptionListFragment extends Fragment implements ILoader<CommonCapti
         View root = AsyncLayoutInflateManager.getInstance(mContext).inflateView(inflater, container, R.layout.fragment_caption_list);
         mLoading = root.findViewById(R.id.loading_view);
         mRepository = (CommonCaptionRepository) RepositoryFactory.createRepository(mContext, this, COMMON_REPOSITORY);
+        tvTitle = root.findViewById(R.id.tvTitle);
         tvEmptyCaption = root.findViewById(R.id.tv_empty_caption);
         tvNumberCaption = root.findViewById(R.id.tv_number_caption);
         rvCaption = root.findViewById(R.id.rv_caption);

@@ -8,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,16 +19,16 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.tabs.TabLayout;
 import com.xlteam.givelove.R;
 import com.xlteam.givelove.external.utility.animation.ViManager;
 import com.xlteam.givelove.external.utility.thread.AsyncLayoutInflateManager;
 
 public class HomeFragment extends Fragment {
     private Context mContext;
-    private TabLayout tabLayoutCategory;
     private ViewPager viewPager;
     private SlidePagerAdapter mAdapter;
+    private RelativeLayout layoutTitle, layoutCategory;
+    private TextView tvTitle;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -43,11 +45,60 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         final View root = AsyncLayoutInflateManager.getInstance(mContext).inflateView(inflater, container, R.layout.fragment_home);
-        tabLayoutCategory = root.findViewById(R.id.tab_layout_category);
         viewPager = root.findViewById(R.id.viewPager);
-        mAdapter = new SlidePagerAdapter(getChildFragmentManager(), mContext);
+        tvTitle = root.findViewById(R.id.tvTitle);
+        layoutCategory = root.findViewById(R.id.layout_category);
+        layoutTitle = root.findViewById(R.id.layout_title);
+        mAdapter = new SlidePagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(mAdapter);
-        tabLayoutCategory.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        tvTitle.setText(mContext.getString(R.string.tat_ca_thinh));
+                        break;
+                    case 1:
+                        tvTitle.setText(mContext.getString(R.string.thinh_dang_hot));
+                        break;
+                    case 2:
+                        tvTitle.setText(mContext.getString(R.string.choi_chu));
+                        break;
+                    case 3:
+                        tvTitle.setText(mContext.getString(R.string.tho_ca));
+                        break;
+                    case 4:
+                        tvTitle.setText(mContext.getString(R.string.van_hoc));
+                        break;
+                    case 5:
+                        tvTitle.setText(mContext.getString(R.string.ca_dao));
+                        break;
+                    case 6:
+                        tvTitle.setText(mContext.getString(R.string.van_van));
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        layoutTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (layoutCategory.getVisibility() == View.VISIBLE) {
+                    layoutCategory.setVisibility(View.GONE);
+                } else {
+                    layoutCategory.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         return root;
     }
 
@@ -69,12 +120,10 @@ public class HomeFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public class SlidePagerAdapter extends FragmentStatePagerAdapter {
-        private Context mContext;
+    public static class SlidePagerAdapter extends FragmentStatePagerAdapter {
 
-        SlidePagerAdapter(FragmentManager fm, Context context) {
+        SlidePagerAdapter(FragmentManager fm) {
             super(fm);
-            mContext = context;
         }
 
         @NonNull
@@ -91,27 +140,6 @@ public class HomeFragment extends Fragment {
         @Override
         public int getCount() {
             return 7;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return mContext.getString(R.string.all);
-                case 1:
-                    return mContext.getString(R.string.trending);
-                case 2:
-                    return mContext.getString(R.string.give_love);
-                case 3:
-                    return mContext.getString(R.string.life);
-                case 4:
-                    return mContext.getString(R.string.friend);
-                case 5:
-                    return mContext.getString(R.string.family);
-                case 6:
-                    return mContext.getString(R.string.other);
-            }
-            return mContext.getString(R.string.all);
         }
     }
 }

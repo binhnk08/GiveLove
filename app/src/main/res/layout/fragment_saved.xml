@@ -19,7 +19,7 @@
         android:visibility="invisible" />
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/divider2"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_below="@id/tv_number_caption"
@@ -29,7 +29,7 @@
         android:id="@+id/rv_caption"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/divider"
+        android:layout_below="@id/divider2"
         android:visibility="gone" />
 
     <include
@@ -37,14 +37,14 @@
         layout="@layout/loading_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/divider"
+        android:layout_below="@id/divider2"
         android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_empty_caption"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/divider"
+        android:layout_below="@id/divider2"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:text="@string/no_caption"
