@@ -6,11 +6,11 @@ import static com.xlteam.givelove.external.utility.utils.Constant.RepositoryType
 import static com.xlteam.givelove.external.utility.utils.Constant.RepositoryType.USER_REPOSITORY;
 
 public class RepositoryFactory {
-    public static AbsRepository createRepository(Context context, ILoader callback, int repositoryType) {
+    public static <T extends AbsRepository> T createRepository(Context context, ILoader callback, int repositoryType) {
         if (repositoryType == COMMON_REPOSITORY)
-            return new CommonCaptionRepository(context, callback);
+            return (T) new CommonCaptionRepository(context, callback);
         else if (repositoryType == USER_REPOSITORY)
-            return new UserCaptionRepository(context, callback);
+            return (T) new UserCaptionRepository(context, callback);
         throw new IllegalArgumentException("No repository was created - repositoryType = " + repositoryType);
     }
 }
