@@ -23,7 +23,7 @@ import java.util.List;
 import timber.log.Timber;
 
 
-public class MyApplication extends Application implements ILoader<CommonCaption> {
+public class MyApplication extends Application {
 
     public MyApplication() {
         super();
@@ -50,7 +50,7 @@ public class MyApplication extends Application implements ILoader<CommonCaption>
     }
 
     private void insertDatabase() {
-        CommonCaptionRepository mRepository = new CommonCaptionRepository(this, this);
+        CommonCaptionRepository mRepository = new CommonCaptionRepository(this, null);
         mRepository.insertToDatabase();
     }
 }

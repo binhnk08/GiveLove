@@ -55,7 +55,7 @@ public class CaptionListFragment extends Fragment implements ILoader<CommonCapti
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = AsyncLayoutInflateManager.getInstance(mContext).inflateView(inflater, container, R.layout.fragment_caption_list);
         mLoading = root.findViewById(R.id.loading_view);
-        mRepository = (CommonCaptionRepository) RepositoryFactory.createRepository(mContext, this, COMMON_REPOSITORY);
+        mRepository = RepositoryFactory.createRepository(mContext, this, COMMON_REPOSITORY);
         tvTitle = root.findViewById(R.id.tvTitle);
         tvEmptyCaption = root.findViewById(R.id.tv_empty_caption);
         tvNumberCaption = root.findViewById(R.id.tv_number_caption);

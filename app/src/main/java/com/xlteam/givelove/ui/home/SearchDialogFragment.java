@@ -97,7 +97,7 @@ public class SearchDialogFragment extends DialogFragment implements ILoader<Comm
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View root = AsyncLayoutInflateManager.getInstance(mContext).inflateView(inflater, container, R.layout.fragment_dialog_search);
         mLoading = root.findViewById(R.id.loading_view);
-        mRepository = (CommonCaptionRepository) RepositoryFactory.createRepository(mContext, this, COMMON_REPOSITORY);
+        mRepository = RepositoryFactory.createRepository(mContext, this, COMMON_REPOSITORY);
         tvNumberCaption = root.findViewById(R.id.tv_number_caption);
         tvEmptyCaption = root.findViewById(R.id.tv_empty_caption);
         Utility.vibrateAnimation(mContext, tvEmptyCaption);

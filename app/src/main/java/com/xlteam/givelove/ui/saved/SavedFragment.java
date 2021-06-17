@@ -45,7 +45,7 @@ public class SavedFragment extends Fragment implements ILoader<CommonCaption>, C
                              Bundle savedInstanceState) {
         final View root = AsyncLayoutInflateManager.getInstance(mContext).inflateView(inflater, container, R.layout.fragment_saved);
         mLoading = root.findViewById(R.id.loading_view);
-        mRepository = (CommonCaptionRepository) RepositoryFactory.createRepository(mContext, this, COMMON_REPOSITORY);
+        mRepository = RepositoryFactory.createRepository(mContext, this, COMMON_REPOSITORY);
         tvEmptyCaption = root.findViewById(R.id.tv_empty_caption);
         tvNumberCaption = root.findViewById(R.id.tv_number_caption);
         rvCaption = root.findViewById(R.id.rv_caption);
