@@ -1,6 +1,8 @@
 package com.xlteam.givelove.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,5 +54,14 @@ public class SplashActivity extends AppCompatActivity {
         layoutManager.setAlignItems(AlignItems.FLEX_START);
         r.setLayoutManager(layoutManager);
         r.setAdapter(new XongThiXoaAdapter(this, strings));
+        TextView tvFilter = findViewById(R.id.tv_filter);
+        tvFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (r.getVisibility() == View.VISIBLE)
+                    r.setVisibility(View.GONE);
+                else r.setVisibility(View.VISIBLE);
+            }
+        });
     }
 }
